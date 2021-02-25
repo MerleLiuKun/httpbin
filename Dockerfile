@@ -9,9 +9,8 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 COPY ./sources.list /etc/apt/sources.list
-COPY ./pip.conf ~/.pip/pip.conf
 
-RUN apt update -y && apt install python3-pip git -y && pip3 install --no-cache-dir pipenv
+RUN apt update -y && apt install python3-pip git -y && pip config set global.index-url https://mirrors.cloud.aliyuncs.com/pypi/simple/ && pip3 install --no-cache-dir pipenv
 
 ADD Pipfile Pipfile.lock /httpbin/
 WORKDIR /httpbin
