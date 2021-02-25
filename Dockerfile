@@ -9,6 +9,7 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 COPY ./sources.list /etc/apt/sources.list
+COPY ./pip.conf ~/.pip/pip.conf
 
 RUN apt update -y && apt install python3-pip git -y && pip3 install --no-cache-dir pipenv
 
