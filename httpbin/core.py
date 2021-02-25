@@ -727,7 +727,7 @@ def stream_n_messages(n):
 
 
 @app.route("/stream/<int:n>/<int:s>")
-def stream_n_messages(n, s):
+def stream_n_s_messages(n, s):
     """Stream n JSON responses
       ---
       tags:
