@@ -10,7 +10,7 @@ ENV LANG=C.UTF-8
 
 COPY ./sources.list /etc/apt/sources.list
 
-RUN apt update -y && apt install python3-pip git -y && pip3 config set global.index-url https://mirrors.cloud.aliyuncs.com/pypi/simple/ && pip3 install --no-cache-dir pipenv
+RUN apt update -y && apt install python3-pip git -y && pip3 config set global.index-url https://mirrors.cloud.aliyuncs.com/pypi/simple/ && pip config set install.trusted-host mirrors.cloud.aliyuncs.com && pip3 install --no-cache-dir pipenv
 
 ADD Pipfile Pipfile.lock /httpbin/
 WORKDIR /httpbin
