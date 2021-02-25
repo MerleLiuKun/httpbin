@@ -1,5 +1,5 @@
 [[source]]
-url = "https://pypi.python.org/simple"
+url = "https://mirrors.aliyun.com/pypi/simple/"
 verify_ssl = true
 
 [packages]
@@ -12,7 +12,7 @@ meinheld = "*"
 werkzeug = ">=0.14.1"
 six = "*"
 flasgger = "*"
-pyyaml = {git = "https://github.com/yaml/pyyaml.git"}
+pyyaml = "*"
 
 [dev-packages]
 rope = "*"

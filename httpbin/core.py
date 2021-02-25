@@ -726,6 +726,39 @@ def stream_n_messages(n):
     return Response(generate_stream(), headers={"Content-Type": "application/json"})
 
 
+@app.route("/stream/<int:n>/<int:s>")
+def stream_n_messages(n, s):
+  """Stream n JSON responses
+    ---
+    tags:
+      - Dynamic data
+    parameters:
+      - in: path
+        name: n
+        type: int
+      - in: path
+        name: s
+        type: int
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Streamed JSON responses.
+    """
+    response = get_dict("url", "args", "headers", "origin")
+    n = min(n, 1000)
+    s = min(s, 10)
+
+    def generate_stream():
+        for i in range(n):
+            response["id"] = i
+            time.sleep(s)
+            yield json.dumps(response) + "\n"
+
+    return Response(generate_stream(), headers={"Content-Type": "application/json"})
+
+
+
 @app.route(
     "/status/<codes>", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "TRACE"]
 )
