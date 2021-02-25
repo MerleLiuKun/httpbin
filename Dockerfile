@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 LABEL name="httpbin"
 LABEL version="0.9.2"
@@ -7,6 +7,8 @@ LABEL org.kennethreitz.vendor="Kenneth Reitz"
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
+
+COPY ./sources.list /etc/apt/sources.list
 
 RUN apt update -y && apt install python3-pip git -y && pip3 install --no-cache-dir pipenv
 
